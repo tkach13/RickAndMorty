@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.benten.rickandmorty.databinding.LayoutCharacterItemBinding
+import com.benten.rickandmorty.models.Character
+import com.bumptech.glide.Glide
 
 
 class RickAndMortyAdapter() : RecyclerView.Adapter<RickAndMortyAdapter.RickAndMortyViewHolder>() {
 
-    private val itemsList = mutableListOf<String>()
+    private val itemsList = mutableListOf<Character>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RickAndMortyViewHolder {
@@ -19,6 +21,10 @@ class RickAndMortyAdapter() : RecyclerView.Adapter<RickAndMortyAdapter.RickAndMo
     }
 
     override fun onBindViewHolder(holder: RickAndMortyViewHolder, position: Int) {
+        val character = itemsList[position]
+
+        Glide.with(holder.itemView.context).load(character.image).into(holder.binding.ivAvatar)
+
     }
 
 
@@ -27,9 +33,8 @@ class RickAndMortyAdapter() : RecyclerView.Adapter<RickAndMortyAdapter.RickAndMo
     }
 
 
-    inner class RickAndMortyViewHolder(private val binding: LayoutCharacterItemBinding) :
+    inner class RickAndMortyViewHolder(val binding: LayoutCharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 
 }
