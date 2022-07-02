@@ -6,10 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class Character(
     @SerializedName("created")
     val created: String,
-    @SerializedName("episode")
-    val episode: List<String>,
-    @SerializedName("gender")
-    val gender: String,
     @SerializedName("id")
     val id: Int,
     @SerializedName("image")
